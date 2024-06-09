@@ -1,40 +1,80 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Hedera
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A Flutter package for interacting with the Hedera Hashgraph, developed and maintained by Hydra Technologies.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## About Hydra Technologies
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Hydra Technologies provider of innovative solutions tailored to meet modern business challenges. Specializing in consulting, development, and support services, our mission is to help businesses thrive in the digital age. With a focus on cutting-edge technology and reliable support, we deliver custom software solutions designed to streamline operations and drive growth. Our experts are dedicated to navigating complex challenges and providing top-notch technological solutions, ensuring our clients stay ahead in a rapidly evolving market.
 
-## Features
+## Installing
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Add Hedera to your `pubspec.yaml` file:
 
-## Getting started
+```yaml
+dependencies:
+  hedera:
+```
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Import Hedera in files where it will be used:
+
+```dart
+import 'package:hedera/hedera.dart';
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Initialize Client
 
 ```dart
-const like = 'sample';
+import 'package:hedera/hedera.dart';
+
+void main() async {
+  final client = HederaClient('https://your-hedera-node-url', 'your-api-key');
+
+  // Get the network version
+  final networkVersion = await client.call('net_version', []);
+  print('Network Version: $networkVersion');
+}
 ```
 
-## Additional information
+### Account
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
-# hedera
+```dart
+import 'package:hedera/hedera.dart';
+
+void main() async {
+  final client = HederaClient('https://your-hedera-node-url', 'your-api-key');
+  final account = Account(client, 'your-account-address');
+
+  // Get account balance
+  final balance = await account.getBalance();
+  print('Account Balance: $balance');
+}
+```
+
+### Transaction
+
+```dart
+import 'package:hedera/hedera.dart';
+
+void main() async {
+  final client = HederaClient('https://your-hedera-node-url', 'your-api-key');
+  final transaction = Transaction(client);
+
+  // Send a transaction
+  final transactionId = await transaction.sendTransaction(
+    'from-address',
+    'to-address',
+    'amount'
+  );
+  print('Transaction ID: $transactionId');
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
