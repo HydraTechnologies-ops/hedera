@@ -1,5 +1,5 @@
-import 'client.dart';
-import 'client.dart';
+import '../utils/client.dart';
+import '../utils/client.dart';
 
 class Transaction {
   final HederaClient client;

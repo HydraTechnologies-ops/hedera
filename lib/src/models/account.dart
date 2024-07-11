@@ -1,4 +1,4 @@
-import 'client.dart';
+import '../utils/client.dart';
 
 class Account {
   final HederaClient client;

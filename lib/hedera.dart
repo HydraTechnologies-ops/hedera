@@ -1,5 +1,5 @@
 library hedera;
 
-export 'src/client.dart';
-export 'src/account.dart';
-export 'src/transaction.dart';
+export 'src/utils/client.dart';
+export 'src/models/account.dart';
+export 'src/models/transaction.dart';
